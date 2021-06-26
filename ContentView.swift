@@ -10,6 +10,7 @@ import SwiftUI
 extension Color{
     static let BlueYonder = Color("BlueYonder")
     static let GoogleBackColor = Color("GoogleBackColor")
+    static let kakaoyellow = Color("kakaoyellow")
 }
 
 struct ContentView: View {
@@ -19,10 +20,11 @@ struct ContentView: View {
                     Text("Meal") // 나중에 아이콘 으로 바꾸면 괜찮을듯
                         //.fontWeight(.bold) // bold 표시
                         .foregroundColor(.black) // font Color Black 지정
-                        .font(.system(size:55)) // font size change
-                        .kerning(3) // 문자간 간격 설정
+                        //.font(.system(size:55)) // font size change
+                        //.kerning(3) // 문자간 간격 설정
                         .padding(.top, -60)
-                        //.font(.title)
+                        //.font(.headline)
+                        .font(.largeTitle)
                     /*
                     NavigationLink(destination: ContentView()){
                         Text("네이버로 로그인")
@@ -82,42 +84,71 @@ struct ContentView: View {
                     Spacer()
                     
                     VStack(){
-                        Button(action: {}) {
-                          Text("페이스북으로 시작하기")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.BlueYonder)
-                            .cornerRadius(4.0)
-                        }.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                        Button(action: {}) {
-                          Text("카카오톡으로 시작하기")
-                            .font(.headline)
-                            .foregroundColor(.black)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.yellow)
-                            .cornerRadius(4.0)
-                        }.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                        Button(action: {}) {
-                          Text("네이버 계정으로 시작하기")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.green)
-                            .cornerRadius(4.0)
-                        }.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                        Button(action: {}) {
-                          Text("구글로 시작하기")
-                            .font(.headline)
-                            .foregroundColor(.black)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.GoogleBackColor)
-                            .cornerRadius(4.0)
-                        }.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                        ZStack{
+                            Image("facebookicon")
+                                .resizable()
+                                .frame(width: 22, height: 22)
+                                .zIndex(1)
+                                .padding(.trailing, 240) //  right padding
+                            Button(action: {}) {
+                              Text("페이스북으로 시작하기")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.BlueYonder)
+                                .cornerRadius(4.0)
+                            }.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                        }
+                        ZStack{
+                            Image("kakaoicon")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .zIndex(1)
+                                .padding(.trailing, 240) //  right padding
+                            Button(action: {}) {
+                              Text("카카오톡으로 시작하기")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.kakaoyellow)
+                                .cornerRadius(4.0)
+                            }.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                        }
+                        ZStack{
+                            Image("navericon")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .zIndex(1)
+                                .padding(.trailing, 240) //  right padding
+                            Button(action: {}) {
+                              Text("네이버 계정으로 시작하기")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.green)
+                                .cornerRadius(4.0)
+                            }.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                        }
+                        ZStack{
+                            Image("googleicon")
+                                .resizable()
+                                .frame(width: 17, height: 17)
+                                .zIndex(1)
+                                .padding(.trailing, 240) //  right padding
+                            Button(action: {}) {
+                              Text("구글로 시작하기")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.GoogleBackColor)
+                                .cornerRadius(4.0)
+                            }.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                        }
+                        
                     }
                     Spacer()
                     HStack{
@@ -136,3 +167,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+// 메인 스크린 캐러셀 형식인지 아니면 디자인 변경
+// Meal 로고와 또는 글꼴 설정
+
+// IOS 디바이스 시뮬레이터로 다운 받았을 때 배경화면 검은색으로 뜨느것 확인하고 조치
