@@ -184,3 +184,4 @@ struct ContentView_Previews: PreviewProvider {
 // Meal 로고와 또는 글꼴 설정
 
 // IOS 디바이스 시뮬레이터로 다운 받았을 때 배경화면 검은색으로 뜨느것 확인하고 조치
+// 주간 개인목표 작성
