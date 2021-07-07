@@ -19,19 +19,17 @@ struct ContentView: View {
             GeometryReader {
                     geometry in
                     ZStack {
-                        Image("whitebackgroundimg")
+                        Image("mainIMG")
                             .resizable()
                             .aspectRatio(geometry.size, contentMode: .fill)
                             .edgesIgnoringSafeArea(.all)
-                        
                         VStack{
-                            Spacer()
-                                Text("Meal") // 나중에 아이콘 으로 바꾸면 괜찮을듯
+                                Text("") // 나중에 아이콘 으로 바꾸면 괜찮을듯
                                     //.fontWeight(.bold) // bold 표시
-                                    .foregroundColor(.black) // font Color Black 지정
-                                    .font(.system(size:50)) // font size change
+                                    .foregroundColor(.white) // font Color Black 지정
+                                    .font(.system(size:0)) // font size change
                                     .kerning(6) // 문자간 간격 설정 원ㄹ
-                                    //.padding(.bottom, -1000)
+                                    .padding(.bottom, -1000)
                                 /*
                                 NavigationLink(destination: ContentView()){
                                     Text("네이버로 로그인")
@@ -91,54 +89,84 @@ struct ContentView: View {
                                 Spacer()
                                 
                                 VStack(){
+                                    ZStack{
+                                        Image("facebookicon")
+                                            .resizable()
+                                            .frame(width: 22, height: 22)
+                                            .zIndex(1)
+                                            .padding(.trailing, 240) //  right padding
                                         Button(action: {}) {
-                                          Text("로그인")
+                                          Text("페이스북으로 시작하기")
                                             .font(.headline)
                                             .foregroundColor(.white)
                                             .padding()
                                             .frame(width: 300, height: 50)
                                             .background(Color.BlueYonder)
+                                            .cornerRadius(4.0)
                                         }
-                                        .cornerRadius(7)
-                                        .overlay(
-                                                RoundedRectangle(cornerRadius: 7)
-                                                    .stroke(Color.BlueYonder, lineWidth: 0.5)
-                                            )
                                         //.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                                    
+                                    }
+                                    ZStack{
+                                        Image("kakaoicon")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .zIndex(1)
+                                            .padding(.trailing, 240) //  right padding
                                         Button(action: {}) {
-                                          Text("시작")
+                                          Text("카카오톡으로 시작하기")
+                                            .font(.headline)
+                                            .foregroundColor(.black)
+                                            .padding()
+                                            .frame(width: 300, height: 50)
+                                            .background(Color.kakaoyellow)
+                                            .cornerRadius(4.0)
+                                        }
+                                        //.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                                    }
+                                    ZStack{
+                                        Image("navericon")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .zIndex(1)
+                                            .padding(.trailing, 240) //  right padding
+                                        Button(action: {}) {
+                                          Text("네이버 계정으로 시작하기")
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .frame(width: 300, height: 50)
+                                            .background(Color.green)
+                                            .cornerRadius(4.0)
+                                        }
+                                        //.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                                    }
+                                    ZStack{
+                                        Image("googleicon")
+                                            .resizable()
+                                            .frame(width: 17, height: 17)
+                                            .zIndex(1)
+                                            .padding(.trailing, 240) //  right padding
+                                        Button(action: {}) {
+                                          Text("구글로 시작하기")
                                             .font(.headline)
                                             .foregroundColor(.black)
                                             .padding()
                                             .frame(width: 300, height: 50)
                                             .background(Color.GoogleBackColor)
-                                            
+                                            .cornerRadius(4.0)
                                         }
-                                        .cornerRadius(7)
-                                        .overlay(
-                                                RoundedRectangle(cornerRadius: 7)
-                                                    .stroke(Color.BlueYonder, lineWidth: 0.5)
-                                            )
-                                        .padding(.top, 5)
-                                        
                                         //.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                                    }
+                                    
                                 }
-                                
+                                Spacer()
                                 HStack{
-                                    Text("둘 중 하나를 선택함으로써, 귀하는 이용약관 및 개인 정보 보호 정책에 동의하시게 됩니다.")
-                                        .foregroundColor(.black)
-                                        .font(.system(size:13))
-                                        .padding()
-                                        .frame(width: 350)
-                                        .multilineTextAlignment(.center)
-                                        //.kerning(6) // 글자 간격
-                                    //Button("가입하기"){
-                                        //print("가입하기")
-                                    //}
-                                }
-                                
-                            Spacer()
+                                    Text("계정이 없으신가요?")
+                                        .foregroundColor(.white)
+                                    Button("가입하기"){
+                                        print("가입하기")
+                                    }
+                                }.font(.system(size:15))
                     }
                 }
             }
