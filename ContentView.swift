@@ -13,12 +13,22 @@ extension Color{
     static let kakaoyellow = Color("kakaoyellow")
 }
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        sleep(2)
+        return true
+    }
+}
 
 
 struct ContentView: View {
+  @State private var showModal = false
     
 
     var body: some View {
+        
         NavigationView{
             GeometryReader {
                     geometry in
@@ -36,7 +46,7 @@ struct ContentView: View {
                                     //.fontWeight(.bold) // bold 표시
                                     .foregroundColor(.black) // font Color Black 지정
                                     .font(.system(size:50)) // font size change
-                                    .kerning(5) // 문자간 간격 설정
+                                    //.kerning(5) // 문자간 간격 설정
                                     
                                     //.padding(.bottom, -1000)
                                 Spacer()
@@ -57,14 +67,18 @@ struct ContentView: View {
                                             )
                                         //.shadow(color: .gray, radius: 2, x: 0, y: 2)
                                     
-                                        Button(action: {}) {
+                                        Button(action: {
+                                            self.showModal = true
+                                        }) {
                                             Text("시작")
                                             .font(.headline)
                                             .foregroundColor(.black)
                                             .padding()
                                             .frame(width: 300, height: 50)
                                             .background(Color.GoogleBackColor)
-                                            
+                                                .sheet(isPresented: self.$showModal){
+                                                    Start()
+                                                }
                                         }
                                         .cornerRadius(7)
                                         .overlay(
@@ -96,6 +110,8 @@ struct ContentView: View {
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
