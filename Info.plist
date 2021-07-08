@@ -32,7 +32,7 @@
 		<key>UIColorName</key>
 		<string>launchScreenBackground</string>
 		<key>UIImageName</key>
-		<string>mealogo</string>
+		<string>mainios-launch</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
