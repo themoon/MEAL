@@ -106,23 +106,7 @@ struct ContentView: View {
                                         }
                                         //.shadow(color: .gray, radius: 2, x: 0, y: 2)
                                     }
-                                    ZStack{
-                                        Image("kakaoicon")
-                                            .resizable()
-                                            .frame(width: 30, height: 30)
-                                            .zIndex(1)
-                                            .padding(.trailing, 240) //  right padding
-                                        Button(action: {}) {
-                                          Text("카카오톡으로 시작하기")
-                                            .font(.headline)
-                                            .foregroundColor(.black)
-                                            .padding()
-                                            .frame(width: 300, height: 50)
-                                            .background(Color.kakaoyellow)
-                                            .cornerRadius(4.0)
-                                        }
-                                        //.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                                    }
+                                    
                                     ZStack{
                                         Image("navericon")
                                             .resizable()

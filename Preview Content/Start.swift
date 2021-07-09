@@ -6,15 +6,36 @@ struct Start: View{
     @State var email = ""
     @State var password = ""
     
+    enum Size : Int {
+        case CornerRadius = 7
+    }
+    
+    let buttonwidth : Int = 300
+    let buttonheight : Int = 50
+    
+    let image = UIImage(systemName: "applelogo")
+    
+    
     var body: some View{
+        
+        
+        GeometryReader {
+                geometry in
+                ZStack {
+                    Image("whitebackgroundimg")
+                        .resizable()
+                        .aspectRatio(geometry.size, contentMode: .fill)
+                        .edgesIgnoringSafeArea(.all)
+                    
         VStack{
             HStack{
                 Button(action:{
                     self.presentationMode.wrappedValue.dismiss()
                 }){
-                    Image("x-icon")
-                        .resizable()
-                        .frame(width:30, height:30)
+                    //Image("x-icon")
+                        //.resizable()
+                        //.frame(width:30, height:30
+                        Text(" ")
                         .padding()
                 }
                 
@@ -23,10 +44,9 @@ struct Start: View{
                 Button(action:{
                     self.presentationMode.wrappedValue.dismiss()
                 }){
-                    Image("x-icon")
-                        .resizable()
-                        .frame(width:30, height:30)
+                    Text("Cancel")
                         .padding()
+                        //.foregroundColor(.black)
                 }
             }
             
@@ -42,29 +62,87 @@ struct Start: View{
             
             TextField("      ID / E-mail Address", text: $email)
                 .frame(width: 300, height: 50)
-                .background(RoundedRectangle(cornerRadius: 7).strokeBorder())
+                .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
+                .overlay(
+                        RoundedRectangle(cornerRadius: 7)
+                            .stroke(Color.BlueYonder, lineWidth: 0.5)
+                    )
                 .padding(.top, 50)
             
             TextField("      Password", text: $password)
                 .frame(width: 300, height: 50)
-                .background(RoundedRectangle(cornerRadius: 7).strokeBorder())
+                .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
+                .overlay(
+                        RoundedRectangle(cornerRadius: 7)
+                            .stroke(Color.BlueYonder, lineWidth: 0.5)
+                    )
                 .padding(.top, 5)
             
             Button(action: {}) {
-              Text("계정 등록") // 아이디 비번 입력 시 색 변화 필요
+              Text("등록 하기") // 아이디 비번 입력 시 색 변화 필요
                 .font(.headline) // 이 속성 활용하기
                 .foregroundColor(.white)
                 
                 .frame(width: 300, height: 50)
                 .background(Color.BlueYonder)
             }
-                .cornerRadius(7)
+            .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
                 .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: CGFloat(Size.CornerRadius.rawValue))
                             .stroke(Color.BlueYonder, lineWidth: 0.5)
                     )
-                    
                 .padding(.top, 20)
+            
+            
+            Divider()
+                //.background(Color.gray)
+                .padding(.top, 40)
+                .frame(width: 300)
+                .padding(.bottom, 40)
+            ZStack{
+                Image("kakaoicon")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .zIndex(1)
+                    .padding(.trailing, 190)
+                
+                Button(action: {}) {
+                  Text("카카오톡으로 시작하기")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                    .frame(width: 300, height: 50)
+                    .background(Color.kakaoyellow)
+                }
+                .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
+                    .overlay(
+                            RoundedRectangle(cornerRadius: CGFloat(Size.CornerRadius.rawValue))
+                                .stroke(Color.kakaoyellow, lineWidth: 0.5)
+                         )
+            }
+            
+            ZStack{
+                Image(systemName: "applelogo")
+                    .resizable()
+                    .frame(width: 16, height: 16)
+                    .zIndex(1)
+                    .padding(.trailing, 140)
+                    .foregroundColor(.white)
+                
+                Button(action: {}) {
+                  Text("Apple로 로그인")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 300, height: 50)
+                    .background(Color.black)
+                }
+                .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
+                    .overlay(
+                            RoundedRectangle(cornerRadius: CGFloat(Size.CornerRadius.rawValue))
+                                .stroke(Color.black, lineWidth: 0.5)
+                        )
+                .padding(.top, 2)
+            }
+                
             Spacer()
                 
             
@@ -72,6 +150,8 @@ struct Start: View{
                 
             
             
+                }
+            }
         }
     }
 }

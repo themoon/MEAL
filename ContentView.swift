@@ -39,16 +39,11 @@ struct ContentView: View {
                             .edgesIgnoringSafeArea(.all)
                         
                         VStack{
-                            //Spacer()
                                 Image("mainios")
                                     .cornerRadius(50, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                                Text("Meal") // 나중에 아이콘 으로 바꾸면 괜찮을듯
-                                    //.fontWeight(.bold) // bold 표시
-                                    .foregroundColor(.black) // font Color Black 지정
-                                    .font(.system(size:50)) // font size change
-                                    //.kerning(5) // 문자간 간격 설정
-                                    
-                                    //.padding(.bottom, -1000)
+                                Text("Meal")
+                                    .foregroundColor(.black)
+                                    .font(.system(size:50))
                                 Spacer()
                                 
                                 VStack(){
@@ -97,10 +92,6 @@ struct ContentView: View {
                                         .padding()
                                         .frame(width: 350)
                                         .multilineTextAlignment(.center)
-                                        //.kerning(6) // 글자 간격
-                                    //Button("가입하기"){
-                                        //print("가입하기")
-                                    //}
                                 }
                                 
                             Spacer()
@@ -118,8 +109,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-// 메인 스크린 캐러셀 형식인지 아니면 디자인 변경
-// Meal 로고와 또는 글꼴 설정
-
-// 주간 개인목표 작성
