@@ -3,8 +3,9 @@ import SwiftUI
 struct Start: View{
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var email = ""
-    @State var password = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     
     enum Size : Int {
         case CornerRadius = 7
@@ -15,8 +16,52 @@ struct Start: View{
     
     let image = UIImage(systemName: "applelogo")
     
+    public struct CustomTextFieldStyle : TextFieldStyle {
+        public func _body(configuration: TextField<Self._Label>) -> some View {
+            configuration
+                //.font(.largeTitle) // set the inner Text Field Font
+                .padding(.leading, 10) // Set the inner Text Field Padding
+                //Give it some style
+                .font(.system(size:14))
+            
+        }
+    }
+    
+    // TextField 내에 Text에 대한 left padding 조절과 글을 썼을 때의 Style 조정
+    
+    struct SuperTextField: View {
+        
+        var placeholder : Text
+        @Binding var text: String
+        var editChanged : (Bool)->() = { _ in }
+        var commit: ()->() = { }
+        
+        var body: some View {
+            ZStack( alignment: .leading) {
+                if text.isEmpty { placeholder }
+                TextField("", text: $text, onEditingChanged: editChanged, onCommit: commit)
+                    .textContentType(.emailAddress)
+                    .frame(width: 300, height: 50)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 7)
+                                .stroke(Color.BlueYonder, lineWidth: 0.5)
+                        )
+                    
+                    //.cornerRadius(CGFloat(Size.CornerRadius.rawValue)) 연해짐
+                    
+                    .foregroundColor(Color.black)
+                    .textFieldStyle(CustomTextFieldStyle())
+            }
+        }
+        
+    }
+    
+    // SuperTextField라는 placeholder를 위한 새로운 TextField 제작
     
     var body: some View{
+        
+        
+        
         
         
         GeometryReader {
@@ -50,7 +95,6 @@ struct Start: View{
                 }
             }
             
-            
             //.position(x: 30, y: 30)
             Text("계정 등록")
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -58,9 +102,10 @@ struct Start: View{
                 .padding(.top, 30)
                 .font(.system(size:25))
                 .foregroundColor(.black)
-          
+                .padding(.bottom, 50)
             
-            TextField("      ID / E-mail Address", text: $email)
+            /*TextField("ID / E-mail Address", text: $email)
+                .textContentType(.emailAddress)
                 .frame(width: 300, height: 50)
                 .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
                 .overlay(
@@ -68,8 +113,20 @@ struct Start: View{
                             .stroke(Color.BlueYonder, lineWidth: 0.5)
                     )
                 .padding(.top, 50)
+                .foregroundColor(Color.black)
+                .multilineTextAlignment(.center)*/
             
-            TextField("      Password", text: $password)
+            SuperTextField(
+                        placeholder:
+                            Text("   Please enter your ID and password in order")
+                            .font(.system(size:14))
+                            .foregroundColor(.gray)
+                        ,text: $email
+                    )
+            // SuperTextField 사용 시 맨 위 주석에서 설정
+            
+            SecureField("", text: $password)
+                .textContentType(.password)
                 .frame(width: 300, height: 50)
                 .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
                 .overlay(
@@ -77,6 +134,10 @@ struct Start: View{
                             .stroke(Color.BlueYonder, lineWidth: 0.5)
                     )
                 .padding(.top, 5)
+                .foregroundColor(Color.black)
+                .textFieldStyle(CustomTextFieldStyle())
+            
+                
             
             Button(action: {}) {
               Text("등록 하기") // 아이디 비번 입력 시 색 변화 필요
@@ -94,11 +155,27 @@ struct Start: View{
                 .padding(.top, 20)
             
             
-            Divider()
-                //.background(Color.gray)
-                .padding(.top, 40)
-                .frame(width: 300)
-                .padding(.bottom, 40)
+            ZStack{
+                Text("or")
+                    .foregroundColor(Color.gray)
+                    .frame(width: 40)
+                    .cornerRadius(CGFloat(20))
+                        .overlay(
+                                RoundedRectangle(cornerRadius: CGFloat(20))
+                                    .stroke(Color.BlueYonder, lineWidth: 0.5)
+                            )
+                    .background(Color.AppleDefalut)
+                    .zIndex(10)
+                
+                Divider()
+                    .background(Color.gray)
+                    .padding(.top, 40)
+                    .frame(width: 300)
+                    .padding(.bottom, 40)
+                    
+            }
+            
+            
             ZStack{
                 Image("kakaoicon")
                     .resizable()

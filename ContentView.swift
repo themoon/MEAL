@@ -11,6 +11,7 @@ extension Color{
     static let BlueYonder = Color("BlueYonder")
     static let GoogleBackColor = Color("GoogleBackColor")
     static let kakaoyellow = Color("kakaoyellow")
+    static let AppleDefalut = Color("AppleDefalut")
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 struct ContentView: View {
   @State private var showModal = false
-    
 
     var body: some View {
         
@@ -47,7 +47,9 @@ struct ContentView: View {
                                 Spacer()
                                 
                                 VStack(){
-                                        Button(action: {}) {
+                                        Button(action: {
+                                            
+                                        }) {
                                           Text("로그인")
                                             .font(.headline)
                                             .foregroundColor(.white)
@@ -60,6 +62,7 @@ struct ContentView: View {
                                                 RoundedRectangle(cornerRadius: 7)
                                                     .stroke(Color.BlueYonder, lineWidth: 0.5)
                                             )
+                                        
                                         //.shadow(color: .gray, radius: 2, x: 0, y: 2)
                                     
                                         Button(action: {
