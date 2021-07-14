@@ -7,6 +7,8 @@ struct Start: View{
     @State private var password: String = ""
     
     
+ 
+    
     enum Size : Int {
         case CornerRadius = 7
     }
@@ -136,6 +138,7 @@ struct Start: View{
                 .padding(.top, 5)
                 .foregroundColor(Color.black)
                 .textFieldStyle(CustomTextFieldStyle())
+                
             
                 
             
