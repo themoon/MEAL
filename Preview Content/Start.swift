@@ -7,8 +7,6 @@ struct Start: View{
     @State private var password: String = ""
     
     
- 
-    
     enum Size : Int {
         case CornerRadius = 7
     }
@@ -61,9 +59,6 @@ struct Start: View{
     // SuperTextField라는 placeholder를 위한 새로운 TextField 제작
     
     var body: some View{
-        
-        
-        
         
         
         GeometryReader {

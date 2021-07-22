@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Login_View : View{
+struct ActionSheetCardItem : View{
     var body: some View{
         GeometryReader {
                 geometry in
@@ -88,14 +88,15 @@ struct Login_View : View{
                     // bottom infomation Text line
                     
                 }
+                .padding(.top, 30)
             }
         }
     }
 }
 
 
-struct Login_View_Previews: PreviewProvider {
+struct ActionSheetCardItem_Previews: PreviewProvider {
     static var previews: some View {
-        Login_View()
+        ActionSheetCardItem()
     }
 }

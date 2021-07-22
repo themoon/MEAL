@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct GrayOutOfFocusView : View{
+struct GreyOutOfFocusView : View{
     var body: some View{
         Rectangle()
                     .frame(width: UIScreen.main.bounds.width,
@@ -8,11 +8,12 @@ struct GrayOutOfFocusView : View{
                     .background(Color.gray)
                     .opacity(0.7)
                     .ignoresSafeArea()
+        
     }
 }
 
 struct GrayOutOfFocusView_Previews: PreviewProvider {
     static var previews: some View {
-        GrayOutOfFocusView()
+        GreyOutOfFocusView()
     }
 }
