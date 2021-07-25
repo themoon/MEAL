@@ -4,13 +4,13 @@ struct ActionSheetCardItem : View{
     var body: some View{
         GeometryReader {
                 geometry in
-                ZStack {
+                ZStack (alignment: .bottom){
                     Image("whitebackgroundimg")
                         .resizable()
                         .aspectRatio(geometry.size, contentMode: .fill)
                         .edgesIgnoringSafeArea(.all)
         
-                VStack{
+                VStack {
                     
                     Button(action: {}) {
                       Text("등록 하기") // 아이디 비번 입력 시 색 변화 필요

@@ -6,7 +6,7 @@ struct GreyOutOfFocusView : View{
                     .frame(width: UIScreen.main.bounds.width,
                            height: UIScreen.main.bounds.height)
                     .background(Color.gray)
-                    .opacity(0.7)
+                    .opacity(0.1)
                     .ignoresSafeArea()
         
     }

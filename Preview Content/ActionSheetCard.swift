@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-struct ActionSgeetCard : View{
+struct ActionSheetCard : View{
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
     
@@ -15,7 +15,7 @@ struct ActionSgeetCard : View{
             // -- //
             
             ActionSheetCardItem()
-                .frame(width: .infinity, height: 350, alignment: .center)
+                .frame(width: .infinity, height: 350)
                 .cornerRadius(15)
         }
             
@@ -23,8 +23,8 @@ struct ActionSgeetCard : View{
     }
 }
 
-struct ActionSgeetCard_Previews: PreviewProvider {
+struct ActionSheetCard_Previews: PreviewProvider {
     static var previews: some View {
-        ActionSgeetCard()
+        ActionSheetCard()
     }
 }
