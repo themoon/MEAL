@@ -47,9 +47,12 @@ struct ContentView: View {
                             .font(.system(size:50))
                         Spacer()
                         
-                        VStack(){
+                        VStack{
+                            
+                            
                             Button(action: {
-                                self.LoginshowModal.toggle()
+                                //self.LoginshowModal.toggle()
+                                self.LoginshowModal = true
                             }) {
                                 Text("로그인")
                                     .font(.headline)
@@ -57,15 +60,34 @@ struct ContentView: View {
                                     .padding()
                                     .frame(width: 300, height: 50)
                                     .background(Color.BlueYonder)
+                                    /*.sheet(isPresented: self.$LoginshowModal){
+                                        HalfModalView(isShown: $LoginshowModal){
+                                            Text("HI modals")
+                                        }
+                                    }*/
                             }
-                            /*HalfModalView(isShown: $LoginshowModal){
-                                Text("HI modal")
-                            }*/
+                            
+                            // test
+                            ZStack{
+                                Button(action: {
+                                    self.LoginshowModal.toggle()
+                                }) {
+                                    Text("khbjhbjhbhjbjhbhbbhhbj")
+                                }
+                                HalfModalView(isShown: $LoginshowModal){
+                                    Text("HI modal")
+                                }
+                            }
+                            //
+                            
+                        
+                            
                             .cornerRadius(7)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 7)
                                     .stroke(Color.BlueYonder, lineWidth: 0.5)
                             )
+                            
                             
                             //.shadow(color: .gray, radius: 2, x: 0, y: 2)
                             
@@ -101,7 +123,11 @@ struct ContentView: View {
                                 .multilineTextAlignment(.center)
                         }
                         
+                        
+                        
                         Spacer()
+                        
+                        
                     }
                 }
             }
