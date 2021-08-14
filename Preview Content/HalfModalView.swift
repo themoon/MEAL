@@ -22,10 +22,8 @@ struct HalfModalView<Content: View> : View {
                 state = .dragging(translation: drag.translation)
             }
             .onEnded(onDragEnded)
-        
         return Group{
-        
-        ZStack{
+            ZStack{
             //Backgruond
             Spacer().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .frame(

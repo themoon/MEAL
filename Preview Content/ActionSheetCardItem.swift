@@ -2,13 +2,6 @@ import SwiftUI
 
 struct ActionSheetCardItem : View{
     var body: some View{
-        GeometryReader {
-                geometry in
-                ZStack (alignment: .bottom){
-                    Image("whitebackgroundimg")
-                        .resizable()
-                        .aspectRatio(geometry.size, contentMode: .fill)
-                        .edgesIgnoringSafeArea(.all)
         
                 VStack {
                     
@@ -90,8 +83,6 @@ struct ActionSheetCardItem : View{
                 }
                 .padding(.top, 30)
             }
-        }
-    }
 }
 
 

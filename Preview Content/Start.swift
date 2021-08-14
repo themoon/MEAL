@@ -74,11 +74,10 @@ struct Start: View{
                 Button(action:{
                     self.presentationMode.wrappedValue.dismiss()
                 }){
-                    //Image("x-icon")
-                        //.resizable()
-                        //.frame(width:30, height:30
-                        Text(" ")
-                        .padding()
+                    /*Image("x-icon")
+                        .resizable()
+                        .frame(width:30, height:30)*/
+                    Text(" ")
                 }
                 
                 Spacer()
@@ -86,9 +85,10 @@ struct Start: View{
                 Button(action:{
                     self.presentationMode.wrappedValue.dismiss()
                 }){
-                    Text("Cancel")
+                    Image("x-icon")
+                        .resizable()
+                        .frame(width:30, height:30)
                         .padding()
-                        //.foregroundColor(.black)
                 }
             }
             
@@ -188,6 +188,7 @@ struct Start: View{
                     .frame(width: 300, height: 50)
                     .background(Color.kakaoyellow)
                 }
+                
                 .cornerRadius(CGFloat(Size.CornerRadius.rawValue))
                     .overlay(
                             RoundedRectangle(cornerRadius: CGFloat(Size.CornerRadius.rawValue))

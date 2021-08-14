@@ -1,8 +1,8 @@
 //
-//  ContentView.swift
+//  index.swift
 //  Sub_Meal
 //
-//  Created by 이예직 on 2021/06/22.
+//  Created by 이예직 on 2021/08/13.
 //
 
 import SwiftUI
@@ -14,131 +14,80 @@ extension Color{
     static let AppleDefalut = Color("AppleDefalut")
 }
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        sleep(2)
-        return true
-    }
-}
-
-
-struct ContentView: View {
-  @State private var showModal = false
-  @State private var LoginshowModal = false
-
-    var body: some View {
-        
-        NavigationView{
-            GeometryReader {
-                geometry in
-                ZStack {
-                    Image("whitebackgroundimg")
-                        .resizable()
-                        .aspectRatio(geometry.size, contentMode: .fill)
-                        .edgesIgnoringSafeArea(.all)
-                    
-                    VStack{
-                        Image("mainios")
-                            .cornerRadius(50, antialiased: true)
-                        Text("Meal")
-                            .foregroundColor(.black)
-                            .font(.system(size:50))
-                        Spacer()
-                        
-                        VStack{
-                            
-                            
-                            Button(action: {
-                                //self.LoginshowModal.toggle()
-                                self.LoginshowModal = true
-                            }) {
-                                Text("로그인")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 300, height: 50)
-                                    .background(Color.BlueYonder)
-                                    /*.sheet(isPresented: self.$LoginshowModal){
-                                        HalfModalView(isShown: $LoginshowModal){
-                                            Text("HI modals")
-                                        }
-                                    }*/
-                            }
-                            
-                            // test
-                            ZStack{
-                                Button(action: {
-                                    self.LoginshowModal.toggle()
-                                }) {
-                                    Text("khbjhbjhbhjbjhbhbbhhbj")
-                                }
-                                HalfModalView(isShown: $LoginshowModal){
-                                    Text("HI modal")
-                                }
-                            }
-                            //
-                            
-                        
-                            
-                            .cornerRadius(7)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 7)
-                                    .stroke(Color.BlueYonder, lineWidth: 0.5)
-                            )
-                            
-                            
-                            //.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                            
-                            Button(action: {
-                                self.showModal = true
-                            }) {
-                                Text("시작")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                                    .padding()
-                                    .frame(width: 300, height: 50)
-                                    .background(Color.GoogleBackColor)
-                                    .sheet(isPresented: self.$showModal){
-                                        Start()
-                                    }
-                            }
-                            .cornerRadius(7)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 7)
-                                    .stroke(Color.BlueYonder, lineWidth: 0.5)
-                            )
-                            .padding(.top, 5)
-                            
-                            //.shadow(color: .gray, radius: 2, x: 0, y: 2)
-                        }
-                        
-                        HStack{
-                            Text("둘 중 하나를 선택함으로써, 귀하는 이용약관 및 개인 정보 보호 정책에 동의하시게 됩니다.")
-                                .foregroundColor(.black)
-                                .font(.system(size:13))
-                                .padding()
-                                .frame(width: 350)
-                                .multilineTextAlignment(.center)
-                        }
-                        
-                        
-                        
-                        Spacer()
-                        
-                        
-                    }
-                }
+struct ContentView: View{
+    @State private var Login = false
+    @State private var Start = false
+    
+    var body: some View{
+        ZStack{
+            
+            Button(action:{
+                self.Login.toggle()
+            }) {
+                Text("로그인")
+                    .font(.headline)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .foregroundColor(.white)
+                    .background(Color.BlueYonder)
+                    .cornerRadius(7)
             }
-        }
-    }
-}
+            HalfModalView(isShown: $Login){
+                //Text("HI modal")
+                ActionSheetCardItem()
+            }
+                .zIndex(100) // 중요
+             
+            Button(action:{
+                self.Start.toggle()
+            }){
+                Text("시작")
+                    .font(.headline)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .foregroundColor(.black)
+                    .background(Color.GoogleBackColor)
+                    .cornerRadius(7)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 7)
+                            .stroke(Color.BlueYonder, lineWidth: 0.5)
+                    )
+                    .padding(.top, 5)
+                    // -- sheet 작업
+                    .sheet(isPresented: self.$Start){
+                        Sub_Meal.Start()
+                    }
+            }
+                .padding(.top, 110)
+            
+            
+            Text("둘 중 하나를 선택함으로써, 귀하는 이용약관 및 개인 정보 보호 정책에 동의하시게 됩니다.")
+                .foregroundColor(.black)
+                .font(.system(size:13))
+                .padding()
+                .frame(width: 350)
+                .multilineTextAlignment(.center)
+                .padding(.top, 260)
+            // --
+            VStack{
+                
+                // 첫번째
+                    Image("mainios") // 메인 상단 이미지
+                        .cornerRadius(50, antialiased: true)
+                    Text("Meal") // 메인 상단 제목
+                        .font(.system(size:50))
+                    Spacer()
+                        .frame(height: 400)
+                // VStack 중 첫번째
+                
+                
+            }
+        }.padding(.bottom, 20) // 오류수정
+    } // some View block code
+} // Index View block code
 
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+struct ContentView_Previews: PreviewProvider{
+    static var previews: some View{
         ContentView()
     }
 }
